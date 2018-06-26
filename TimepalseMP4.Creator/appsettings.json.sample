@@ -1,0 +1,9 @@
+﻿{
+	"AppSettings": {
+		"SourceImageLocation": "",
+		"LocalImageLocation": "",
+		"MP4OutputDirectory": "",
+		"WindowsFfmpegLocation": "C:\\Program Files\\ffmpeg-4.0-win64-static\\bin\\ffmpeg.exe",
+		"UnsortedImagesDirectory": ""
+	}
+}
