@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using TimelapseMP4.Webpage.Models;
 
 namespace TimelapseMP4.Webpage
 {
@@ -21,12 +22,19 @@ namespace TimelapseMP4.Webpage
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
-            // In production, the Angular files will be served from this directory
-            services.AddSpaStaticFiles(configuration =>
+			services.AddSwaggerGen(c =>
+			{
+				c.SwaggerDoc("v1", new Info { Title = "TimelapseMP4.Webpage", Version = "v1" });
+			});
+
+			// In production, the Angular files will be served from this directory
+			services.AddSpaStaticFiles(configuration =>
             {
                 configuration.RootPath = "ClientApp/dist";
             });
-        }
+
+			services.Configure<WebpageSettings>(Configuration.GetSection("WebpageSettings"));
+		}
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
@@ -40,7 +48,10 @@ namespace TimelapseMP4.Webpage
                 app.UseExceptionHandler("/Error");
             }
 
-            app.UseStaticFiles();
+			// Enable middleware to serve generated Swagger as a JSON endpoint.
+			app.UseSwagger();
+
+			app.UseStaticFiles();
             app.UseSpaStaticFiles();
 
             app.UseMvc(routes =>
