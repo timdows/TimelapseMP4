@@ -1,7 +1,7 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "project": {
-    "name": "TimelapseMP4Webpage"
+    "name": "TimelapseMP4.Webpage"
   },
   "apps": [
     {
@@ -18,10 +18,8 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "app",
       "styles": [
-		"styles.scss",
-		"../node_modules/bootstrap/dist/css/bootstrap.min.css",
-		"../node_modules/font-awesome/scss/font-awesome.scss"
-		
+        "styles.css",
+        "../node_modules/bootstrap/dist/css/bootstrap.min.css"
       ],
       "scripts": [],
       "environmentSource": "environments/environment.ts",
@@ -56,9 +54,8 @@
     }
   },
   "defaults": {
-    "styleExt": "scss",
-    "component": {
-    },
+    "styleExt": "css",
+    "component": {},
     "build": {
       "progress": true
     }

@@ -231,10 +231,3 @@ _Pvt_Extensions
 
 # FAKE - F# Make
 .fake/
-
-
-MP4/*.mp4
-ClientApp/src/environments/version.ts
-Hour1400Files/*.jpg
-appsettings.json
-.vscode/upload.ps1

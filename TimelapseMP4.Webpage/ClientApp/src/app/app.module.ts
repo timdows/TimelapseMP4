@@ -5,26 +5,27 @@ import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
+import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
-import { Mp4ListComponent } from './mp4-list/mp4-list.component';
-import { Mp4PlayerComponent } from './mp4-player/mp4-player.component';
-import { Hour1400ImagesComponent } from './hour1400-images/hour1400-images.component';
+import { CounterComponent } from './counter/counter.component';
+import { FetchDataComponent } from './fetch-data/fetch-data.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    NavMenuComponent,
     HomeComponent,
-    Mp4ListComponent,
-    Mp4PlayerComponent,
-    Hour1400ImagesComponent
+    CounterComponent,
+    FetchDataComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HttpClientModule,
     FormsModule,
     RouterModule.forRoot([
-		{ path: 'hour1400', component: Hour1400ImagesComponent },
-		{ path: '', component: HomeComponent, pathMatch: 'full' },
+      { path: '', component: HomeComponent, pathMatch: 'full' },
+      { path: 'counter', component: CounterComponent },
+      { path: 'fetch-data', component: FetchDataComponent },
     ])
   ],
   providers: [],
