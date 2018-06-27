@@ -10,6 +10,26 @@
                 "${workspaceFolder}/TimelapseMP4.Creator/TimelapseMP4.Creator.csproj"
             ],
             "problemMatcher": "$msCompile"
+        },
+		{
+            "label": "Build publish webpage",
+            "type": "shell",
+            "command": "dotnet publish --runtime debian-x64",
+            "group": "test",
+            "presentation": {
+                "reveal": "always",
+                "panel": "new"
+            }
+        },
+		{
+            "label": "Upload published webpage",
+            "type": "shell",
+            "command": "./.vscode/upload.ps1",
+            "group": "test",
+            "presentation": {
+                "reveal": "always",
+                "panel": "new"
+            }
         }
     ]
 }
