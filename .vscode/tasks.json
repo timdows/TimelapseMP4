@@ -7,7 +7,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/TimepalseMP4.Creator/TimelapseMP4Creator.csproj"
+                "${workspaceFolder}/TimelapseMP4.Creator/TimelapseMP4.Creator.csproj"
             ],
             "problemMatcher": "$msCompile"
         }
