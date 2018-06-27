@@ -331,3 +331,6 @@ ASALocalRun/
 TimelapseMP4.Creator/output/*
 TimelapseMP4.Creator/Commands.txt
 TimelapseMP4.Creator/appsettings.json
+/TimelapseMP4.Creator_/output
+/TimelapseMP4.Creator_/appsettings.json
+/TimelapseMP4.Creator_/Commands.txt
