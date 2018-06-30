@@ -7,8 +7,9 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using TimelapseMP4.Creator.Models;
 
-namespace TimelapseMP4Creator
+namespace TimelapseMP4.Creator
 {
 	public class Program
 	{
@@ -16,7 +17,7 @@ namespace TimelapseMP4Creator
 
 		public static async Task Main(string[] args)
 		{
-			Get1400HourFiles();
+			//Get1400HourFiles();
 
 			while (true)
 			{

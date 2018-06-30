@@ -1,4 +1,4 @@
-﻿namespace TimelapseMP4Creator
+﻿namespace TimelapseMP4.Creator.Models
 {
 	public class AppSettings
 	{
