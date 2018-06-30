@@ -53,18 +53,6 @@ namespace TimelapseMP4.Creator
 				await GetFilesAndSaveResizedCommand.GetFilesAndSaveResized(sourceDirectory, destinationDirectory);
 				//await CreateTimelapseMP4(appSettings, destinationDirectory, date);
 			}
-		}
-
-		// public static async Task CreateTimelapseMP4FromUnsortedFiles(AppSettings appSettings)
-		// {
-		// 	var sources = Directory.EnumerateDirectories(appSettings.LocalImageLocation);
-		// 	foreach (var source in sources)
-		// 	{
-		// 		var date = Path.GetFileName(source);
-		// 		await CreateTimelapseMP4(appSettings, source, date);
-		// 	}
-		// }
-
-		
+		}		
 	}
 }
