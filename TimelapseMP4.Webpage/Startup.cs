@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Swashbuckle.AspNetCore.Swagger;
+using TimelapseMP4.Webpage.Filters;
 using TimelapseMP4.Webpage.Models;
 
 namespace TimelapseMP4.Webpage
@@ -26,6 +27,7 @@ namespace TimelapseMP4.Webpage
 			services.AddSwaggerGen(c =>
 			{
 				c.SwaggerDoc("v1", new Info { Title = "TimelapseMP4.Webpage", Version = "v1" });
+				c.OperationFilter<FormFileOperationFilter>();
 			});
 
 			// In production, the Angular files will be served from this directory

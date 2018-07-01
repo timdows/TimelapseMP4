@@ -1,10 +1,10 @@
 
 export const appVersion = '0.0.0';
 
-export const gitShort = 'feee31e';
+export const gitShort = 'd262b2a';
 
-export const gitLong = 'feee31e9d8550685e811a012aea60c4bcb7ff282';
+export const gitLong = 'd262b2a7637e95f17d28afc77b7d25efcacda551';
 
-export const gitDate = 'Sat Jun 30 2018 12:57:45 GMT+0200 (W. Europe Daylight Time)';
+export const gitDate = 'Sun Jul 01 2018 14:08:32 GMT+0200 (W. Europe Daylight Time)';
 
 export const gitBranch = 'master';

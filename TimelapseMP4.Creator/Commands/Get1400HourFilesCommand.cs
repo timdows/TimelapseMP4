@@ -7,6 +7,7 @@ using SixLabors.ImageSharp;
 using SixLabors.ImageSharp.Processing;
 using SixLabors.ImageSharp.Processing.Transforms;
 using TimelapseMP4.Creator.Models;
+using TimelapseMP4.Creator.Services;
 
 namespace TimelapseMP4.Creator.Commands
 {
@@ -74,6 +75,11 @@ namespace TimelapseMP4.Creator.Commands
 						int width = (int)Math.Round(image.Width / widthRatio, 0);
 						image.Mutate(x => x.Resize(width, height));
 						image.Save($"{saveDir}\\{saveFile.DateTimeTaken.ToString("yyyy-MM-ddTHHmmss")}_thumb.jpg");
+					}
+
+					using (var client = new TimelapseMP4Webpage())
+					{
+						
 					}
 				}
 				catch (Exception excep)
