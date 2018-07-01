@@ -8,5 +8,6 @@
 		public string MP4OutputDirectory { get; set; }
 		public string UnsortedImagesDirectory { get; set; }
 		public string Hour1400UploadSecret { get; set; }
+		public string ServiceApiLocation { get; set; }
 	}
 }

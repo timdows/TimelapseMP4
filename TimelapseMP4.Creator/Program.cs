@@ -32,12 +32,7 @@ namespace TimelapseMP4.Creator
 				.Build();
 
 			var appSettings = config.GetSection("AppSettings").Get<AppSettings>();
-
-			var get1400HourFilesCommand = new Get1400HourFilesCommand(appSettings);
-			get1400HourFilesCommand.Get1400HourFiles();
-
-			//UnsortedFiles(appSettings);
-			//await CreateTimelapseMP4FromUnsortedFiles(appSettings);
+			var get1400HourFileCommand = new Get1400HourFileCommand(appSettings);
 
 			var directories = Directory.EnumerateDirectories(appSettings.SourceImageLocation);
 			foreach (var directory in directories)
@@ -52,6 +47,7 @@ namespace TimelapseMP4.Creator
 				var destinationDirectory = Path.Combine(appSettings.LocalImageLocation, date);
 
 				await GetFilesAndSaveResizedCommand.GetFilesAndSaveResized(sourceDirectory, destinationDirectory);
+				get1400HourFileCommand.Get1400HourFile(sourceDirectory);
 				//await CreateTimelapseMP4(appSettings, destinationDirectory, date);
 			}
 		}		

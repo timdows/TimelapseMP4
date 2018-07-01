@@ -11,16 +11,16 @@ using TimelapseMP4.Creator.Services;
 
 namespace TimelapseMP4.Creator.Commands
 {
-	public class Get1400HourFilesCommand
+	public class Get1400HourFileCommand
 	{
 		private readonly AppSettings _appSettings;
 
-		public Get1400HourFilesCommand(AppSettings appSettings)
+		public Get1400HourFileCommand(AppSettings appSettings)
 		{
 			_appSettings = appSettings;
 		}
 		
-		public void Get1400HourFiles()
+		public void Get1400HourFile(string sourceDirectory)
 		{
 			var saveDir = "Files/1400HourFiles";
 			if (!Directory.Exists(saveDir))
@@ -28,7 +28,7 @@ namespace TimelapseMP4.Creator.Commands
 				Directory.CreateDirectory(saveDir);
 			}
 
-			var fileGroup = Directory.GetFiles(@"\\192.168.1.14\projects\VWP Timelapse\timelapse construction\2018-06-30", "*.jpg", SearchOption.AllDirectories)
+			var fileGroup = Directory.GetFiles(sourceDirectory, "*.jpg", SearchOption.AllDirectories)
 				.Select(item => ImageFileDetails.CreateImageFileDetails(item))
 				.Where(item => item != null)
 				.GroupBy(item => item.DateTimeTaken.Date)
@@ -67,7 +67,8 @@ namespace TimelapseMP4.Creator.Commands
 
 				try
 				{
-					using (var client = new TimelapseMP4Webpage{
+					using (var client = new TimelapseMP4Webpage
+					{
 						BaseUri = new Uri("http://localhost:5020")
 					})
 					{

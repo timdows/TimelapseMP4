@@ -64,7 +64,7 @@ namespace TimelapseMP4.Webpage.Controllers
 			}
 
 			// full path to file in temp location
-			var filePath = Path.GetTempFileName();
+			var filePath = $"{Directory.GetCurrentDirectory()}\\Files\\Hour1400\\{request.FileName}";
 
 			if (request.Bytes.Length > 0)
 			{
