@@ -11,9 +11,16 @@ using TimelapseMP4.Creator.Services;
 
 namespace TimelapseMP4.Creator.Commands
 {
-	public static class Get1400HourFilesCommand
+	public class Get1400HourFilesCommand
 	{
-		public static void Get1400HourFiles()
+		private readonly AppSettings _appSettings;
+
+		public Get1400HourFilesCommand(AppSettings appSettings)
+		{
+			_appSettings = appSettings;
+		}
+		
+		public void Get1400HourFiles()
 		{
 			var saveDir = "1400HourFiles";
 			if (!Directory.Exists(saveDir))
@@ -72,7 +79,7 @@ namespace TimelapseMP4.Creator.Commands
 							var uploadResponse = client.ApiHour1400UploadPost(new Services.Models.Hour1400UploadRequest
 							{
 								FileName = fileName,
-								Secret = "",
+								Secret = _appSettings.Hour1400UploadSecret,
 								Bytes = File.ReadAllBytes($"{saveDir}\\{fileName}")
 							});
 						}
@@ -91,7 +98,7 @@ namespace TimelapseMP4.Creator.Commands
 							var uploadResponse = client.ApiHour1400UploadPost(new Services.Models.Hour1400UploadRequest
 							{
 								FileName = fileName,
-								Secret = "",
+								Secret = _appSettings.Hour1400UploadSecret,
 								Bytes = File.ReadAllBytes($"{saveDir}\\{fileName}")
 							});
 						}
