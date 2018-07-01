@@ -63,14 +63,14 @@ namespace TimelapseMP4.Webpage.Controllers
 				return Unauthorized();
 			}
 
-			var saveDir = $"{Directory.GetCurrentDirectory()}\\{Hour1400Path}";
+			var saveDir = $"{Directory.GetCurrentDirectory()}/{Hour1400Path}";
 			if (!Directory.Exists(saveDir))
 			{
 				Directory.CreateDirectory(saveDir);
 			}
 			
 			// full path to file in temp location
-			var filePath = $"{saveDir}\\{request.FileName}";
+			var filePath = $"{saveDir}/{request.FileName}";
 
 			if (request.Bytes.Length > 0)
 			{

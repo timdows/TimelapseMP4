@@ -77,7 +77,7 @@ namespace TimelapseMP4.Creator.Commands
 						{
 							var fileName = $"{saveFile.DateTimeTaken.ToString("yyyy-MM-ddTHHmmss")}.jpg";
 							image.Mutate(x => x.Resize(image.Width / 2, image.Height / 2));
-							image.Save($"{saveDir}\\{fileName}");
+							image.Save($"{saveDir}/{fileName}");
 
 							var uploadResponse = client.ApiHour1400UploadPost(new Services.Models.Hour1400UploadRequest
 							{
@@ -96,7 +96,7 @@ namespace TimelapseMP4.Creator.Commands
 							var fileName = $"{saveFile.DateTimeTaken.ToString("yyyy-MM-ddTHHmmss")}_thumb.jpg";
 
 							image.Mutate(x => x.Resize(width, height));
-							image.Save($"{saveDir}\\{fileName}");
+							image.Save($"{saveDir}/{fileName}");
 
 							var uploadResponse = client.ApiHour1400UploadPost(new Services.Models.Hour1400UploadRequest
 							{
