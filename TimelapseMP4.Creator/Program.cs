@@ -16,8 +16,6 @@ namespace TimelapseMP4.Creator
 	{	
 		public static async Task Main(string[] args)
 		{
-			//Get1400HourFiles();
-
 			while (true)
 			{
 				await Task.WhenAll(
@@ -34,6 +32,9 @@ namespace TimelapseMP4.Creator
 				.Build();
 
 			var appSettings = config.GetSection("AppSettings").Get<AppSettings>();
+
+			var get1400HourFilesCommand = new Get1400HourFilesCommand(appSettings);
+			get1400HourFilesCommand.Get1400HourFiles();
 
 			//UnsortedFiles(appSettings);
 			//await CreateTimelapseMP4FromUnsortedFiles(appSettings);
