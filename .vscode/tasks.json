@@ -24,7 +24,18 @@
 		{
             "label": "Upload published webpage",
             "type": "shell",
-            "command": "./.vscode/upload.ps1",
+            "command": "./.vscode/uploadWebpage.ps1",
+            "group": "test",
+            "presentation": {
+                "reveal": "always",
+                "panel": "new"
+            }
+		}
+		,
+		{
+            "label": "Upload published creator",
+            "type": "shell",
+            "command": "./.vscode/uploadCreator.ps1",
             "group": "test",
             "presentation": {
                 "reveal": "always",

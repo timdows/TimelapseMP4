@@ -332,5 +332,6 @@ TimelapseMP4.Creator/Commands.txt
 TimelapseMP4.Creator/appsettings.json
 /TimelapseMP4.Webpage/Hour1400Files
 /TimelapseMP4.Webpage/Files
-.vscode/upload.ps1
 TimelapseMP4.Creator/Files/*
+.vscode/uploadWebpage.ps1
+.vscode/uploadCreator.ps1
