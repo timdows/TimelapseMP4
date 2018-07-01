@@ -20,9 +20,9 @@ namespace TimelapseMP4.Creator.Commands
 			_appSettings = appSettings;
 		}
 		
-		public void Get1400HourFile(string sourceDirectory)
+		public async Task Get1400HourFile(string sourceDirectory)
 		{
-			var saveDir = "Files/1400HourFiles";
+			var saveDir = "Files/Hour1400";
 			if (!Directory.Exists(saveDir))
 			{
 				Directory.CreateDirectory(saveDir);
@@ -69,7 +69,7 @@ namespace TimelapseMP4.Creator.Commands
 				{
 					using (var client = new TimelapseMP4Webpage
 					{
-						BaseUri = new Uri("http://localhost:5020")
+						BaseUri = new Uri(_appSettings.ServiceApiLocation)
 					})
 					{
 						// Load the image and save a resized version

@@ -12,15 +12,9 @@ namespace TimelapseMP4.Creator.Commands
 {
 	public static class GetFilesAndSaveResizedCommand
 	{
-		const string FinishedPathsLogFile = "finishedPaths.log";
+		
 		public static async Task GetFilesAndSaveResized(string sourceDirectory, string destinationDirectory)
 		{
-			if (await IsPathInFinishedFile(sourceDirectory))
-			{
-				Console.WriteLine($"Skipping copy files and resize for directory {sourceDirectory}");
-				return;
-			}
-
 			// Check if source directory exists
 			if (!Directory.Exists(sourceDirectory))
 			{
@@ -72,24 +66,6 @@ namespace TimelapseMP4.Creator.Commands
 				var info = $"Finished copying and resizing file: {fileToCopy.FileName}. File {index}/{filesToCopy.Count}. Statistics {downloadTimeInSeconds} - {stopwatch.ElapsedMilliseconds}";
 				Console.WriteLine(info);
 			}
-
-			await AddPathToFinishedFile(sourceDirectory);
-		}
-
-		private static async Task<bool> IsPathInFinishedFile(string path)
-		{
-			if (!File.Exists(FinishedPathsLogFile))
-			{
-				return false;
-			}
-
-			var lines = await File.ReadAllLinesAsync(FinishedPathsLogFile);
-			return lines.Contains(path);
-		}
-
-		private static async Task AddPathToFinishedFile(string path)
-		{
-			await File.AppendAllTextAsync(FinishedPathsLogFile, $"{path}\r\n");
 		}
 	}
 }

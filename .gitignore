@@ -328,9 +328,9 @@ ASALocalRun/
 
 # MFractors (Xamarin productivity tool) working folder 
 .mfractor/
-TimelapseMP4.Creator/output/*
 TimelapseMP4.Creator/Commands.txt
 TimelapseMP4.Creator/appsettings.json
 /TimelapseMP4.Webpage/Hour1400Files
 /TimelapseMP4.Webpage/Files
 .vscode/upload.ps1
+TimelapseMP4.Creator/Files/*

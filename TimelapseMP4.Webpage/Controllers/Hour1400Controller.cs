@@ -63,8 +63,14 @@ namespace TimelapseMP4.Webpage.Controllers
 				return Unauthorized();
 			}
 
+			var saveDir = $"{Directory.GetCurrentDirectory()}\\Files\\Hour1400";
+			if (!Directory.Exists(saveDir))
+			{
+				Directory.CreateDirectory(saveDir);
+			}
+			
 			// full path to file in temp location
-			var filePath = $"{Directory.GetCurrentDirectory()}\\Files\\Hour1400\\{request.FileName}";
+			var filePath = $"{saveDir}\\{request.FileName}";
 
 			if (request.Bytes.Length > 0)
 			{
@@ -73,9 +79,6 @@ namespace TimelapseMP4.Webpage.Controllers
 					await stream.WriteAsync(request.Bytes);
 				}
 			}
-
-			// process uploaded files
-			// Don't rely on or trust the FileName property without validation.
 
 			return Ok(new { request.Bytes.Length, filePath });
 		}
