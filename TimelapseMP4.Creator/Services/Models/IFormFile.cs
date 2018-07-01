@@ -4,7 +4,7 @@
 // regenerated.
 // </auto-generated>
 
-namespace TimelapseMP4Creator.Services.Models
+namespace TimelapseMP4.Creator.Services.Models
 {
     using Newtonsoft.Json;
     using System.Collections;

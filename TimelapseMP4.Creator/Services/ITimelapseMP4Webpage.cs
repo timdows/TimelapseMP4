@@ -4,7 +4,7 @@
 // regenerated.
 // </auto-generated>
 
-namespace TimelapseMP4Creator.Services
+namespace TimelapseMP4.Creator.Services
 {
     using Microsoft.Rest;
     using Models;
