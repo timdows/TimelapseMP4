@@ -20,6 +20,7 @@ namespace TimelapseMP4.Creator
 		{
 			while (true)
 			{
+				Console.WriteLine($"Running commands, start at {DateTime.Now.ToShortTimeString()}");
 				await Task.WhenAll(
 					Run(),
 					Task.Delay(60 * 60 * 1000));
