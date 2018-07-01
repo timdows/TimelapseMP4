@@ -65,6 +65,8 @@ namespace TimelapseMP4.Creator.Commands
 					continue;
 				}
 
+				Console.WriteLine($"Hour1400 file: {saveFile.Path}");
+
 				try
 				{
 					using (var client = new TimelapseMP4Webpage
@@ -83,7 +85,7 @@ namespace TimelapseMP4.Creator.Commands
 							{
 								FileName = fileName,
 								Secret = _appSettings.Hour1400UploadSecret,
-								Bytes = File.ReadAllBytes($"{saveDir}\\{fileName}")
+								Bytes = File.ReadAllBytes($"{saveDir}/{fileName}")
 							});
 						}
 
@@ -102,14 +104,14 @@ namespace TimelapseMP4.Creator.Commands
 							{
 								FileName = fileName,
 								Secret = _appSettings.Hour1400UploadSecret,
-								Bytes = File.ReadAllBytes($"{saveDir}\\{fileName}")
+								Bytes = File.ReadAllBytes($"{saveDir}/{fileName}")
 							});
 						}
 					}
 				}
 				catch (Exception excep)
 				{
-					var a = excep.Message;
+					Console.WriteLine(excep.Message);
 				}
 			}
 		}
