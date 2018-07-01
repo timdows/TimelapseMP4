@@ -11,7 +11,7 @@ namespace TimelapseMP4.Webpage.Controllers
 	[Route("api/[controller]/[action]")]
 	public class Hour1400Controller : Controller
 	{
-		const string Hour1400Path = "Hour1400Files";
+		const string Hour1400Path = "Files/Hour1400";
 		private readonly WebpageSettings _webpageSettings;
 
 		public Hour1400Controller(IOptions<WebpageSettings> webpageSettings)
@@ -63,7 +63,7 @@ namespace TimelapseMP4.Webpage.Controllers
 				return Unauthorized();
 			}
 
-			var saveDir = $"{Directory.GetCurrentDirectory()}\\Files\\Hour1400";
+			var saveDir = $"{Directory.GetCurrentDirectory()}\\{Hour1400Path}";
 			if (!Directory.Exists(saveDir))
 			{
 				Directory.CreateDirectory(saveDir);
