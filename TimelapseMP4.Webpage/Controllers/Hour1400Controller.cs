@@ -66,18 +66,18 @@ namespace TimelapseMP4.Webpage.Controllers
 			// full path to file in temp location
 			var filePath = Path.GetTempFileName();
 
-			if (request.File.Length > 0)
+			if (request.Bytes.Length > 0)
 			{
 				using (var stream = new FileStream(filePath, FileMode.Create))
 				{
-					await request.File.CopyToAsync(stream);
+					await stream.WriteAsync(request.Bytes);
 				}
 			}
 
 			// process uploaded files
 			// Don't rely on or trust the FileName property without validation.
 
-			return Ok(new { request.File.Length, filePath });
+			return Ok(new { request.Bytes.Length, filePath });
 		}
 	}
 }

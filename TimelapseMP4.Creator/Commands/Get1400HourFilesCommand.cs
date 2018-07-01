@@ -60,26 +60,41 @@ namespace TimelapseMP4.Creator.Commands
 
 				try
 				{
-					// Load the image and save a resized version
-					using (var image = Image.Load(saveFile.Path))
-					{
-						image.Mutate(x => x.Resize(image.Width / 2, image.Height / 2));
-						image.Save($"{saveDir}\\{saveFile.DateTimeTaken.ToString("yyyy-MM-ddTHHmmss")}.jpg");
-					}
-
-					// Load the image and save a thumbnail
-					using (var image = Image.Load(saveFile.Path))
-					{
-						var height = 200;
-						decimal widthRatio = image.Height / height;
-						int width = (int)Math.Round(image.Width / widthRatio, 0);
-						image.Mutate(x => x.Resize(width, height));
-						image.Save($"{saveDir}\\{saveFile.DateTimeTaken.ToString("yyyy-MM-ddTHHmmss")}_thumb.jpg");
-					}
-
 					using (var client = new TimelapseMP4Webpage())
 					{
-						
+						// Load the image and save a resized version
+						using (var image = Image.Load(saveFile.Path))
+						{
+							var fileName = $"{saveFile.DateTimeTaken.ToString("yyyy-MM-ddTHHmmss")}.jpg";
+							image.Mutate(x => x.Resize(image.Width / 2, image.Height / 2));
+							image.Save($"{saveDir}\\{fileName}");
+
+							var uploadResponse = client.ApiHour1400UploadPost(new Services.Models.Hour1400UploadRequest
+							{
+								FileName = fileName,
+								Secret = "",
+								Bytes = File.ReadAllBytes($"{saveDir}\\{fileName}")
+							});
+						}
+
+						// Load the image and save a thumbnail
+						using (var image = Image.Load(saveFile.Path))
+						{
+							var height = 200;
+							decimal widthRatio = image.Height / height;
+							int width = (int)Math.Round(image.Width / widthRatio, 0);
+							var fileName = $"{saveFile.DateTimeTaken.ToString("yyyy-MM-ddTHHmmss")}_thumb.jpg";
+
+							image.Mutate(x => x.Resize(width, height));
+							image.Save($"{saveDir}\\{fileName}");
+
+							var uploadResponse = client.ApiHour1400UploadPost(new Services.Models.Hour1400UploadRequest
+							{
+								FileName = fileName,
+								Secret = "",
+								Bytes = File.ReadAllBytes($"{saveDir}\\{fileName}")
+							});
+						}
 					}
 				}
 				catch (Exception excep)

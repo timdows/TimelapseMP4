@@ -22,9 +22,9 @@ namespace TimelapseMP4.Creator.Services.Models
         /// <summary>
         /// Initializes a new instance of the Hour1400UploadRequest class.
         /// </summary>
-        public Hour1400UploadRequest(IFormFile file = default(IFormFile), string fileName = default(string), string secret = default(string))
+        public Hour1400UploadRequest(byte[] bytes = default(byte[]), string fileName = default(string), string secret = default(string))
         {
-            File = file;
+            Bytes = bytes;
             FileName = fileName;
             Secret = secret;
             CustomInit();
@@ -37,8 +37,8 @@ namespace TimelapseMP4.Creator.Services.Models
 
         /// <summary>
         /// </summary>
-        [JsonProperty(PropertyName = "file")]
-        public IFormFile File { get; set; }
+        [JsonProperty(PropertyName = "bytes")]
+        public byte[] Bytes { get; set; }
 
         /// <summary>
         /// </summary>
