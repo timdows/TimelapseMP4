@@ -57,7 +57,7 @@ namespace TimelapseMP4.Creator
 
 				Console.WriteLine($"Working with directory {sourceDirectory}");
 
-				//await GetFilesAndSaveResizedCommand.GetFilesAndSaveResized(sourceDirectory, destinationDirectory);
+				await GetFilesAndSaveResizedCommand.GetFilesAndSaveResized(sourceDirectory, destinationDirectory);
 				await get1400HourFileCommand.Get1400HourFile(sourceDirectory);
 				//await CreateTimelapseMP4(appSettings, destinationDirectory, date);
 
