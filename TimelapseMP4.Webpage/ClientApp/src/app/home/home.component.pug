@@ -1,19 +1,36 @@
-.title
+.page-title
 	h1 Destruction and creation
+
+.activities
+	a.activity([routerLink]="['/hour1400']")
+		.image(style="background: url(../../assets/hour1400.png);")
+			.fa.fa-play.fa-3x
+		.description
+			h3 Hour 1400
+	.activity
+		.image(style="background: url(../../assets/background2014.png);")
+			.fa.fa-play.fa-3x
+		.description
+			h3 2014
+	.activity
+		.image(style="background: url(../../assets/background2015.png);")
+			.fa.fa-play.fa-3x
+		.description
+			h3 2015
 
 .activities
 	.activity
 		.image
 			.fa.fa-play.fa-3x
 		.description
-			.title Build1
+			h3 Missing 2016
 	.activity
-		.image
+		.image(style="background: url(../../assets/background2017.png);")
 			.fa.fa-play.fa-3x
 		.description
-			.title Build2
+			h3 2017
 	.activity
-		.image
+		.image(style="background: url(../../assets/background2018.png);")
 			.fa.fa-play.fa-3x
 		.description
-			.title Build3
+			h3 2018

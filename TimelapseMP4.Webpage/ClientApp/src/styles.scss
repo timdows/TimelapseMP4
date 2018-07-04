@@ -10,6 +10,14 @@ body {
 
 body {
     font-family: 'Montserrat', sans-serif;
+    color: white;
+}
+
+a {
+	color: inherit;
+	&:hover {
+		color: inherit;
+	}
 }
 
 app-root {
@@ -22,7 +30,6 @@ app-root {
         align-items: center;
         justify-content: center;
         >h1 {
-            color: white;
             text-transform: uppercase;
             font-weight: 200;
             &.strong {
