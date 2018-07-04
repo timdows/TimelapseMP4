@@ -13,7 +13,7 @@ namespace TimelapseMP4.Creator.Commands
 	public static class GetFilesAndSaveResizedCommand
 	{
 		
-		public static async Task GetFilesAndSaveResized(string sourceDirectory, string destinationDirectory)
+		public static void GetFilesAndSaveResized(string sourceDirectory, string destinationDirectory)
 		{
 			// Check if source directory exists
 			if (!Directory.Exists(sourceDirectory))
@@ -24,6 +24,7 @@ namespace TimelapseMP4.Creator.Commands
 			// Remove content if the directory exists
 			if (Directory.Exists(destinationDirectory))
 			{
+				Console.WriteLine($"Removing contents of destination directory {destinationDirectory}");
 				var directoryInfo = new DirectoryInfo(destinationDirectory);
 				foreach (var file in directoryInfo.EnumerateFiles())
 				{
@@ -32,6 +33,7 @@ namespace TimelapseMP4.Creator.Commands
 			}
 			else
 			{
+				Console.WriteLine($"Creating destination directory {destinationDirectory}");
 				Directory.CreateDirectory(destinationDirectory);
 			}
 			
