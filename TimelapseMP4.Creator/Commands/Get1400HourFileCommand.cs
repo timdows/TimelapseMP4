@@ -81,7 +81,7 @@ namespace TimelapseMP4.Creator.Commands
 							image.Mutate(x => x.Resize(image.Width / 2, image.Height / 2));
 							image.Save($"{saveDir}/{fileName}");
 
-							var uploadResponse = client.ApiHour1400UploadPost(new Services.Models.Hour1400UploadRequest
+							var uploadResponse = await client.ApiHour1400UploadPostAsync(new Services.Models.Hour1400UploadRequest
 							{
 								FileName = fileName,
 								Secret = _appSettings.Hour1400UploadSecret,
@@ -100,7 +100,7 @@ namespace TimelapseMP4.Creator.Commands
 							image.Mutate(x => x.Resize(width, height));
 							image.Save($"{saveDir}/{fileName}");
 
-							var uploadResponse = client.ApiHour1400UploadPost(new Services.Models.Hour1400UploadRequest
+							var uploadResponse = await client.ApiHour1400UploadPostAsync(new Services.Models.Hour1400UploadRequest
 							{
 								FileName = fileName,
 								Secret = _appSettings.Hour1400UploadSecret,

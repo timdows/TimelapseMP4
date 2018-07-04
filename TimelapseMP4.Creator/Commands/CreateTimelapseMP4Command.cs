@@ -93,7 +93,7 @@ namespace TimelapseMP4.Creator.Commands
 		private static bool IsLinux()
 		{
 			int p = (int)Environment.OSVersion.Platform;
-			return (p == 4) || (p == 6) || (p == 128);
+			return p == 4 || p == 6;
 		}
 	}
 }
