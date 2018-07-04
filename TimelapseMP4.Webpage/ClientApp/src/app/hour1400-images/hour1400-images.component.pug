@@ -1,8 +1,8 @@
 .page-title
-	h1 One image per day
+	h1 One image per day at 14:00
 
 .thumbnails
-	.thumbnail(*ngFor="let hour1400File of hour1400Files")
+	.thumbnail-item(*ngFor="let hour1400File of hour1400Files")
 		img([src]="getImagePath(hour1400File)", (click)="clickImage(hour1400File)")
 		.text {{hour1400File.dateTaken | date:'d MMM y'}}
 
