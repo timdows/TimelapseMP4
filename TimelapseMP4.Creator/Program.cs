@@ -52,7 +52,7 @@ namespace TimelapseMP4.Creator
 				if (await IsPathInFinishedFile(sourceDirectory))
 				{
 					Console.WriteLine($"Skipping copy files and resize for directory {sourceDirectory}");
-					return;
+					continue;
 				}
 
 				Console.WriteLine($"Working with directory {sourceDirectory}");
