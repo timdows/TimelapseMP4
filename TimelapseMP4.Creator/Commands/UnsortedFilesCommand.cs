@@ -74,6 +74,7 @@ namespace TimelapseMP4.Creator.Commands
 				catch (Exception excep)
 				{
 					index--;
+					Console.WriteLine(excep.Message);
 					// Oops, 0 kb file?
 				}
 			}
