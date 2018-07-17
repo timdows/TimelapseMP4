@@ -9,5 +9,6 @@
 		public string UnsortedImagesDirectory { get; set; }
 		public string Hour1400UploadSecret { get; set; }
 		public string ServiceApiLocation { get; set; }
+		public string MountCommand { get; set; }
 	}
 }

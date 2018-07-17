@@ -12,8 +12,30 @@ namespace TimelapseMP4.Creator.Commands
 {
 	public static class InitCommand
 	{
-		public static async Task DoInit(AppSettings appSettings)
+		public static void DoInit(AppSettings appSettings)
 		{
+			if (IsLinux())
+			{
+				Console.WriteLine("Executing InitCommand.DoInit()");
+
+				using (var proc = new Process())
+				{
+					proc.StartInfo.FileName = "/bin/bash";
+					proc.StartInfo.Arguments = "-c \" " + appSettings.MountCommand + " \"";
+					proc.StartInfo.UseShellExecute = false;
+					proc.StartInfo.RedirectStandardOutput = true;
+					proc.StartInfo.RedirectStandardError = true;
+					proc.Start();
+
+					proc.WaitForExit();
+				}
+			}
+		}
+
+		private static bool IsLinux()
+		{
+			int p = (int)Environment.OSVersion.Platform;
+			return p == 4 || p == 6;
 		}
 	}
 }
