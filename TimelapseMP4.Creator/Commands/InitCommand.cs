@@ -17,6 +17,7 @@ namespace TimelapseMP4.Creator.Commands
 			if (IsLinux())
 			{
 				Console.WriteLine("Executing InitCommand.DoInit()");
+				var result = string.Empty;
 
 				using (var proc = new Process())
 				{
@@ -27,8 +28,13 @@ namespace TimelapseMP4.Creator.Commands
 					proc.StartInfo.RedirectStandardError = true;
 					proc.Start();
 
+					result += proc.StandardOutput.ReadToEnd();
+					result += proc.StandardError.ReadToEnd();
+
 					proc.WaitForExit();
 				}
+
+				Console.WriteLine($"DoInit result: {result}");
 			}
 		}
 
