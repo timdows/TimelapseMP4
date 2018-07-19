@@ -19,6 +19,12 @@ namespace TimelapseMP4.Creator.Commands
 				Directory.CreateDirectory(appSettings.MP4OutputDirectory);
 			}
 
+			if (!Directory.Exists(localImageDirectory))
+			{
+				Console.WriteLine($"LocalImageDirectory {localImageDirectory} does not exist");
+				return;
+			}
+
 			var savePath = $"{appSettings.MP4OutputDirectory}\\{filename}.mp4";
 			if (File.Exists(savePath))
 			{
@@ -82,7 +88,7 @@ namespace TimelapseMP4.Creator.Commands
 			var elapsedMillis = stopwatch.ElapsedMilliseconds;
 			Console.WriteLine($"Finished creating movie in {elapsedMillis} ms");
 			result += $"\r\nelapsedMillis: {elapsedMillis}\r\n";
-			await LogCreateOutput(result, filename);
+			//await LogCreateOutput(result, filename);
 		}
 
 		private static async Task LogCreateOutput(string result, string filename)
