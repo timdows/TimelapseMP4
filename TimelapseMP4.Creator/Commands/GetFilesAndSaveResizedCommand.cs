@@ -21,17 +21,8 @@ namespace TimelapseMP4.Creator.Commands
 				throw new Exception($"SourceImageLocation {sourceDirectory} does not exist");
 			}
 
-			// Remove content if the directory exists
-			if (Directory.Exists(destinationDirectory))
-			{
-				Console.WriteLine($"Removing contents of destination directory {destinationDirectory}");
-				var directoryInfo = new DirectoryInfo(destinationDirectory);
-				foreach (var file in directoryInfo.EnumerateFiles())
-				{
-					file.Delete();
-				}
-			}
-			else
+			// Create directory if needed
+			if (!Directory.Exists(destinationDirectory))
 			{
 				Console.WriteLine($"Creating destination directory {destinationDirectory}");
 				Directory.CreateDirectory(destinationDirectory);
@@ -56,6 +47,12 @@ namespace TimelapseMP4.Creator.Commands
 				var localFileName = $"image_{index++.ToString("D4")}.jpg";
 				var destinationPath = Path.Combine(destinationDirectory, localFileName);
 				long downloadTimeInSeconds = 0;
+
+				if (File.Exists(destinationPath))
+				{
+					Console.WriteLine($"File {fileToCopy.FileName} already exists in save directory {destinationPath}");
+					continue;
+				}
 
 				// Load the image and save a resized version
 				using (var image = Image.Load(fileToCopy.Path))
