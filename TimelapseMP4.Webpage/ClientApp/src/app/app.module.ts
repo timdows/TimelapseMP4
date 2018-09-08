@@ -23,6 +23,7 @@ import { Hour1400ImagesComponent } from './hour1400-images/hour1400-images.compo
 		HttpClientModule,
 		FormsModule,
 		RouterModule.forRoot([
+			{ path: 'mp4/:year', component: Mp4ListComponent },
 			{ path: 'hour1400', component: Hour1400ImagesComponent },
 			{ path: '', component: HomeComponent, pathMatch: 'full' },
 		])
