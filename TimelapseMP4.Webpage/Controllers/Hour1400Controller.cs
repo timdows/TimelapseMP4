@@ -11,7 +11,6 @@ namespace TimelapseMP4.Webpage.Controllers
 	[Route("api/[controller]/[action]")]
 	public class Hour1400Controller : Controller
 	{
-		const string Hour1400Path = "Files/Hour1400";
 		private readonly WebpageSettings _webpageSettings;
 
 		public Hour1400Controller(IOptions<WebpageSettings> webpageSettings)
@@ -23,7 +22,7 @@ namespace TimelapseMP4.Webpage.Controllers
 		[Produces(typeof(List<Hour1400File>))]
 		public IActionResult GetList()
 		{
-			var images = Directory.GetFiles(Path.Combine(Directory.GetCurrentDirectory(), Hour1400Path))
+			var images = Directory.GetFiles(Path.Combine(Directory.GetCurrentDirectory(), _webpageSettings.Hour1400Path))
 				.Select(item => Hour1400File.CreateImageFileDetails(item))
 				.ToList();
 			return Json(images);
@@ -33,7 +32,7 @@ namespace TimelapseMP4.Webpage.Controllers
 		[Produces(typeof(List<Hour1400File>))]
 		public IActionResult GetThumbnailList()
 		{
-			var images = Directory.GetFiles(Path.Combine(Directory.GetCurrentDirectory(), Hour1400Path))
+			var images = Directory.GetFiles(Path.Combine(Directory.GetCurrentDirectory(), _webpageSettings.Hour1400Path))
 				.Select(item => Hour1400File.CreateImageFileDetails(item))
 				.Where(item => item.FileName.EndsWith("_thumb.jpg"))
 				.OrderByDescending(item => item.DateTaken)
@@ -44,7 +43,7 @@ namespace TimelapseMP4.Webpage.Controllers
 		[HttpGet]
 		public IActionResult GetImage(string fileName)
 		{
-			var fullPath = Path.Combine(Path.Combine(Directory.GetCurrentDirectory(), Hour1400Path), fileName);
+			var fullPath = Path.Combine(Path.Combine(Directory.GetCurrentDirectory(), _webpageSettings.Hour1400Path), fileName);
 
 			if (System.IO.File.Exists(fullPath))
 			{
@@ -63,7 +62,7 @@ namespace TimelapseMP4.Webpage.Controllers
 				return Unauthorized();
 			}
 
-			var saveDir = $"{Directory.GetCurrentDirectory()}/{Hour1400Path}";
+			var saveDir = $"{Directory.GetCurrentDirectory()}/{_webpageSettings.Hour1400Path}";
 			if (!Directory.Exists(saveDir))
 			{
 				Directory.CreateDirectory(saveDir);
