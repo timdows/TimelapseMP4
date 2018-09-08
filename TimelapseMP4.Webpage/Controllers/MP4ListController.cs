@@ -1,19 +1,26 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Options;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using TimelapseMP4.Webpage.Models;
 
 namespace TimelapseMP4.Webpage.Controllers
 {
 	[Route("api/[controller]/[action]")]
 	public class MP4ListController : Controller
 	{
-		const string MP4Path = "MP4";
+		private readonly WebpageSettings _webpageSettings;
+
+		public MP4ListController(IOptions<WebpageSettings> webpageSettings)
+		{
+			_webpageSettings = webpageSettings.Value;
+		}
 
 		[HttpGet]
 		public IActionResult GetList()
 		{
-			var videos = Directory.GetFiles(Path.Combine(Directory.GetCurrentDirectory(), MP4Path));
+			var videos = Directory.GetFiles(Path.Combine(Directory.GetCurrentDirectory(), _webpageSettings.MP4Path));
 			var mp4Details = new List<MP4Details>();
 
 			foreach (var video in videos)
