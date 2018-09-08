@@ -1,0 +1,13 @@
+{
+	"Logging": {
+		"LogLevel": {
+			"Default": "Warning"
+		}
+	},
+	"AllowedHosts": "*",
+	"WebpageSettings": {
+		"Hour1400UploadSecret": "",
+		"Hour1400Path": "",
+		"MP4Path": ""
+	}
+}
