@@ -335,3 +335,4 @@ TimelapseMP4.Creator/appsettings.json
 TimelapseMP4.Creator/Files/*
 .vscode/uploadWebpage.ps1
 .vscode/uploadCreator.ps1
+TimelapseMP4.Webpage/appsettings.json
