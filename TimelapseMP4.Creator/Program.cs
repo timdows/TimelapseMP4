@@ -34,7 +34,7 @@ namespace TimelapseMP4.Creator
 				catch (Exception excep)
 				{
 					Console.Error.WriteLine(excep.Message);
-					await Task.Delay(60 * 60 * 1000);
+					await Task.Delay(60 * 60 * 1000); 
 				}
 			}
 		}
@@ -43,7 +43,7 @@ namespace TimelapseMP4.Creator
 		{
 			var get1400HourFileCommand = new Get1400HourFileCommand(appSettings);
 
-			var directories = Directory.EnumerateDirectories(appSettings.SourceImageLocation);
+			var directories = Directory.EnumerateDirectories(appSettings.SourceImageLocation).OrderBy(item => item);
 			foreach (var directory in directories)
 			{
 				var date = Path.GetFileName(directory);
@@ -63,8 +63,8 @@ namespace TimelapseMP4.Creator
 
 				Console.WriteLine($"Working with directory {sourceDirectory}");
 
-				GetFilesAndSaveResizedCommand.GetFilesAndSaveResized(sourceDirectory, destinationDirectory);
-				//await get1400HourFileCommand.Get1400HourFile(sourceDirectory);
+				//GetFilesAndSaveResizedCommand.GetFilesAndSaveResized(sourceDirectory, destinationDirectory);
+				await get1400HourFileCommand.Get1400HourFile(sourceDirectory);
 				//await CreateTimelapseMP4Command.CreateTimelapseMP4(appSettings, destinationDirectory, date);
 
 				await AddPathToFinishedFile(sourceDirectory);
