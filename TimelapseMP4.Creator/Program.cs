@@ -24,11 +24,18 @@ namespace TimelapseMP4.Creator
 
 			while (true)
 			{
-				Console.WriteLine($"Running commands, start at {DateTime.Now.ToShortTimeString()}");
-				await Task.WhenAll(
-					Run(appSettings),
-					Task.Delay(60 * 60 * 1000));
-					Console.WriteLine($"Finished run at {DateTime.Now.ToShortTimeString()}");
+				try {
+					Console.WriteLine($"Running commands, start at {DateTime.Now.ToShortTimeString()}");
+					await Task.WhenAll(
+						Run(appSettings),
+						Task.Delay(60 * 60 * 1000));
+						Console.WriteLine($"Finished run at {DateTime.Now.ToShortTimeString()}");
+				}
+				catch (Exception excep)
+				{
+					Console.Error.WriteLine(excep.Message);
+					await Task.Delay(60 * 60 * 1000);
+				}
 			}
 		}
 
