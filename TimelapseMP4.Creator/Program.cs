@@ -42,6 +42,7 @@ namespace TimelapseMP4.Creator
 		public static async Task Run(AppSettings appSettings)
 		{
 			var get1400HourFileCommand = new Get1400HourFileCommand(appSettings);
+			var everyHourFileCommand = new GetEveryHourFileCommand(appSettings);
 
 			var directories = Directory.EnumerateDirectories(appSettings.SourceImageLocation).OrderBy(item => item);
 			foreach (var directory in directories)
@@ -64,7 +65,8 @@ namespace TimelapseMP4.Creator
 				Console.WriteLine($"Working with directory {sourceDirectory}");
 
 				//GetFilesAndSaveResizedCommand.GetFilesAndSaveResized(sourceDirectory, destinationDirectory);
-				await get1400HourFileCommand.Get1400HourFile(sourceDirectory);
+				//await get1400HourFileCommand.Get1400HourFile(sourceDirectory);
+				await everyHourFileCommand.GetEveryHourFile(sourceDirectory);
 				//await CreateTimelapseMP4Command.CreateTimelapseMP4(appSettings, destinationDirectory, date);
 
 				await AddPathToFinishedFile(sourceDirectory);
