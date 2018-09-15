@@ -29,7 +29,7 @@ namespace TimelapseMP4.Creator
 					await Task.WhenAll(
 						Run(appSettings),
 						Task.Delay(60 * 60 * 1000));
-						Console.WriteLine($"Finished run at {DateTime.Now.ToShortTimeString()}");
+					Console.WriteLine($"Finished run at {DateTime.Now.ToShortTimeString()}");
 				}
 				catch (Exception excep)
 				{
